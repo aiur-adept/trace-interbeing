@@ -9,10 +9,10 @@ function generateAndDisplayText() {
     let txt = ';';
     let gold = false;
     let kind = 'div';
-    if (Math.random() < 0.37) {
+    if (Math.random() < 0.20) {
         txt = toib[Math.floor(Math.random() * toib.length)];
         gold = true;
-    } else if (Math.random() < 0.67) {
+    } else if (Math.random() < 0.73) {
         const n = Math.floor(32 + Math.random() * 108);
         for (let i = 0; i < n; i++) {
             txt += src[Math.floor(Math.random() * src.length)];
