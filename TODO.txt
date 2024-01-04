@@ -1,0 +1,5 @@
+figure out how to run npm modules in browser (webpack? browserfy?)
+
+install markovtext
+
+create basic terminal IO in page (user types (OR clicks, for mobile), they get some return from the "server")
