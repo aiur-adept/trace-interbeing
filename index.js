@@ -9,12 +9,11 @@ function generateAndDisplayText() {
     let txt = ';';
     let gold = false;
     let kind = 'div';
-    if (Math.random() < 0.05) {
+    if (Math.random() < 0.10) {
         txt = toib[Math.floor(Math.random() * toib.length)];
         gold = true;
-        kind = 'span';
-    } else if (Math.random() < 0.90) {
-        const n = Math.floor(Math.random() * 128);
+    } else if (Math.random() < 0.67) {
+        const n = Math.floor(32 + Math.random() * 108);
         for (let i = 0; i < n; i++) {
             txt += src[Math.floor(Math.random() * src.length)];
         }
@@ -22,9 +21,9 @@ function generateAndDisplayText() {
         txt = markov.start('and').end(8 + Math.floor(Math.random() * 26)).process();
     }
 
-    const newDiv = document.createElement(kind);
+    const elem = document.createElement('div');
     if (gold) {
-        newDiv.style.color = 'gold';
+        elem.style.color = 'gold';
     }
 
     // Simulate typing effect
@@ -33,7 +32,7 @@ function generateAndDisplayText() {
 
     function typeCharacter() {
         if (charIndex < txt.length) {
-            newDiv.textContent += txt[charIndex];
+            elem.textContent += txt[charIndex];
             charIndex++;
             scrollToBottom();
             setTimeout(typeCharacter, typingSpeed);
@@ -42,7 +41,7 @@ function generateAndDisplayText() {
 
     typeCharacter();
 
-    document.getElementById('terminal').appendChild(newDiv);
+    document.getElementById('terminal').appendChild(elem);
 }
 
 
