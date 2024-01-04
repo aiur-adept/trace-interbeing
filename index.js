@@ -12,19 +12,22 @@ function generateAndDisplayText() {
     if (Math.random() < 0.05) {
         txt = toib[Math.floor(Math.random() * toib.length)];
         gold = true;
-        kind = 'span';
     } else if (Math.random() < 0.90) {
         const n = Math.floor(Math.random() * 128);
         for (let i = 0; i < n; i++) {
             txt += src[Math.floor(Math.random() * src.length)];
+            if (i % 8 == 0) {
+                txt += ' ';
+            }
         }
     } else {
         txt = markov.start('and').end(8 + Math.floor(Math.random() * 26)).process();
     }
 
-    const newDiv = document.createElement(kind);
+    const txtElem = document.createElement('div');
+    txtElem.classList.add('txt');
     if (gold) {
-        newDiv.style.color = 'gold';
+        txtElem.style.color = 'gold';
     }
 
     // Simulate typing effect
@@ -33,7 +36,7 @@ function generateAndDisplayText() {
 
     function typeCharacter() {
         if (charIndex < txt.length) {
-            newDiv.textContent += txt[charIndex];
+            txtElem.textContent += txt[charIndex];
             charIndex++;
             scrollToBottom();
             setTimeout(typeCharacter, typingSpeed);
@@ -42,7 +45,7 @@ function generateAndDisplayText() {
 
     typeCharacter();
 
-    document.getElementById('terminal').appendChild(newDiv);
+    document.getElementById('terminal').appendChild(txtElem);
 }
 
 
