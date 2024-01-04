@@ -9,7 +9,7 @@ function generateAndDisplayText() {
     let txt = ';';
     let gold = false;
     let kind = 'div';
-    if (Math.random() < 0.10) {
+    if (Math.random() < 0.37) {
         txt = toib[Math.floor(Math.random() * toib.length)];
         gold = true;
     } else if (Math.random() < 0.67) {
