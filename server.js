@@ -10,11 +10,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Serve static files from the 'public' directory
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(__dirname));
 
 // Route to serve your index.html
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile('index.html');
 });
 
 // Start the server

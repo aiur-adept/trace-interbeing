@@ -266,7 +266,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "watchify index.js -d -o public/bundle.js -v & nodemon server.js"
+    "start": "watchify index.js -d -o bundle.js -v & nodemon server.js"
   },
   "author": "",
   "license": "ISC"
