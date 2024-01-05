@@ -3,20 +3,26 @@ var toib = require('./toib.json');
 var text = toib.join(' ');
 const markov = new MarkovChain(text);
 
-const src = ['ᚷ', 'ᚾ', 'ᛲ', 'ᛱ', '_', 'ᛥ', 'o', 'r', 'z', 'ᛸ', 'ᛷ', 'ᛶ', 'ᛗ', 'ᚽ', 'ᛏ', 'ᛝ', 'ᛤ', 'ᚱ', 'ᚩ', 'ᚠ', 'ᛈ', 'ᛉ', 'ᛏ', 'ᛓ', 'ᛃ', 'ᚻ', 'ᚼ'];
+let ix = 0;
+
+const src = [
+    'A', 'ᚷ', 'ᚾ', 'ᛲ', '_', 'ᛥ', 'o', 'r', 'z', 'ᛸ',
+    'ᛷ', 'ᛶ', 'ᛗ', 'ᛏ', 'ᛝ', 'ᚱ', 'ᚩ', 'ᚠ', 'ᛈ', 'ᛉ',
+    'ᛏ', 'ᛓ', 'ᛃ', 'ᚻ', 'ᚼ', 'Ω'
+];
 
 function generateAndDisplayText() {
     let txt = ';';
     let gold = false;
-    let kind = 'div';
-    if (Math.random() < 0.05) {
+
+    if (ix == 0 || Math.random() < 0.07) {
         txt = toib[Math.floor(Math.random() * toib.length)];
         gold = true;
-    } else if (Math.random() < 0.90) {
-        const n = Math.floor(Math.random() * 128);
+    } else if (Math.random() < 0.85) {
+        const n = Math.floor(Math.random() * 108);
         for (let i = 0; i < n; i++) {
             txt += src[Math.floor(Math.random() * src.length)];
-            if (i % 8 == 0) {
+            if (i % 22 == 0) {
                 txt += ' ';
             }
         }
@@ -46,6 +52,8 @@ function generateAndDisplayText() {
     typeCharacter();
 
     document.getElementById('terminal').appendChild(txtElem);
+
+    ix++;
 }
 
 
@@ -58,6 +66,6 @@ window.addEventListener('keydown', function (event) {
     generateAndDisplayText();
 });
 
-window.addEventListener('click', function (event) {
+document.getElementById('terminal').addEventListener('click', function (event) {
     generateAndDisplayText();
 });
